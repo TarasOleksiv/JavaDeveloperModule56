@@ -29,6 +29,8 @@
             <list>
                 <value>ua.goit.java8.javadeveloper.model.Manufacturer</value>
                 <value>ua.goit.java8.javadeveloper.model.Product</value>
+                <value>ua.goit.java8.javadeveloper.model.Role</value>
+                <value>ua.goit.java8.javadeveloper.model.User</value>
             </list>
         </property>
         <property name="hibernateProperties">
@@ -49,12 +51,20 @@
         <property name="sessionFactory" ref="hibernate4AnnotatedSessionFactory"/>
     </bean>
 
+    <bean id="userDAO" class="ua.goit.java8.javadeveloper.dao.hibernate.HibernateUserDAOImpl">
+        <property name="sessionFactory" ref="hibernate4AnnotatedSessionFactory"/>
+    </bean>
+
     <bean id="manufacturerService" class="ua.goit.java8.javadeveloper.service.ManufacturerServiceImpl">
         <property name="manufacturerDAO" ref="manufacturerDAO"/>
     </bean>
 
     <bean id="productService" class="ua.goit.java8.javadeveloper.service.ProductServiceImpl">
         <property name="productDAO" ref="productDAO"/>
+    </bean>
+
+    <bean id="userService" class="ua.goit.java8.javadeveloper.service.UserServiceImpl">
+        <property name="userDAO" ref="userDAO"/>
     </bean>
 
     <context:component-scan base-package="ua.goit.java8.javadeveloper"/>
